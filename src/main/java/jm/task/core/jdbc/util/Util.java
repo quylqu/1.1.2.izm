@@ -3,6 +3,7 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import static jm.task.core.jdbc.dao.UserDaoJDBCImpl.connection;
 
 public class Util {
     private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -15,7 +16,7 @@ public class Util {
         try{
             Class.forName((DB_DRIVER));
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-            System.out.println("Connection succesfull!");
+            System.out.println("Connection successfully!");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             System.out.println("Connection failed...");
@@ -23,7 +24,7 @@ public class Util {
         return connection;
     }
 
-    public static void closeConnection(Connection connection) {
+    public static void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();
@@ -34,5 +35,4 @@ public class Util {
             }
         }
     }
-
 }

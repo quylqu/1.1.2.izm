@@ -7,10 +7,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jm.task.core.jdbc.util.Util.closeConnection;
-
 public class UserDaoJDBCImpl implements UserDao {
-    private static final Connection connection = Util.getConnection();
+    public static final Connection connection = Util.getConnection();
 
     public UserDaoJDBCImpl() {
 
@@ -24,8 +22,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
     }
 
@@ -35,8 +31,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
     }
 
@@ -51,8 +45,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
     }
 
@@ -64,8 +56,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
     }
 
@@ -85,8 +75,6 @@ public class UserDaoJDBCImpl implements UserDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
         return userList;
     }
@@ -97,8 +85,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            closeConnection(connection);
         }
     }
 }
