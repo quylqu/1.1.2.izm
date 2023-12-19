@@ -19,14 +19,20 @@ public class Util {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             System.out.println("Connection failed...");
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
         return connection;
+    }
+
+    public static void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Connection closed successfully!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Failed to close connection...");
+            }
+        }
     }
 
 }
